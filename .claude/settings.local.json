@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(mkdir -p /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/docs/screenshots /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/n8n /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/docker/evolution /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/docker/n8n)",
-      "Bash(touch /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/docs/screenshots/.gitkeep)"
+      "Bash(touch /Users/pablo/Desktop/portfolio/dental-studio-whatsapp-bot/docs/screenshots/.gitkeep)",
+      "Bash(rtk ls:*)",
+      "Bash(rtk git:*)"
     ]
   }
 }
