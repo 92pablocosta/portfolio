@@ -1,0 +1,13 @@
+# Environment — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# n8n exported workflows may contain credential IDs — review before committing
+# n8n/workflow.json
+
+# Docker override files (local dev tweaks)
+docker-compose.override.yml

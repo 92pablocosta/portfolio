@@ -1,0 +1,32 @@
+{
+  "_comment": [
+    "This file is a placeholder for the exported n8n workflow.",
+    "",
+    "To export the real workflow:",
+    "  1. Open n8n in your browser",
+    "  2. Open the WhatsApp Triage workflow",
+    "  3. Click the three-dot menu (top-right) -> Download",
+    "  4. Replace this file with the downloaded JSON",
+    "",
+    "Before committing the exported workflow, sanitize it:",
+    "  - Remove any hardcoded API keys or webhook URLs from node parameters",
+    "  - Replace credential IDs with placeholder strings",
+    "  - Ensure no phone numbers or patient data appear in static node values",
+    "",
+    "The workflow implements the following node sequence:",
+    "  Webhook Trigger -> fromMe Guard (IF) -> Redis Append (HTTP) ->",
+    "  Wait 3s -> Debounce Check (IF) -> Redis Flush (HTTP) ->",
+    "  AI Agent (Gemini via LangChain) -> Send Message (Evolution API HTTP)"
+  ],
+  "name": "WhatsApp AI Triage",
+  "nodes": [],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "00000000-0000-0000-0000-000000000000",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

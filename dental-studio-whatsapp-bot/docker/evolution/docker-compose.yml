@@ -1,0 +1,94 @@
+# Evolution API v2 — WhatsApp session manager and webhook dispatcher
+# Docs: https://doc.evolution-api.com
+
+services:
+  evolution-api:
+    image: atendai/evolution-api:v2.2.3
+    container_name: evolution_api
+    restart: unless-stopped
+    networks:
+      - traefik_public   # shared network so Traefik can route to this container
+      - internal         # shared network with Redis and PostgreSQL
+    volumes:
+      - evolution_data:/evolution/instances
+    environment:
+      # --- Server ---
+      SERVER_URL: "${SERVER_URL}"
+
+      # --- Authentication ---
+      # Single master API key that protects all Evolution API endpoints
+      AUTHENTICATION_TYPE: apikey
+      AUTHENTICATION_API_KEY: "${AUTHENTICATION_API_KEY}"
+
+      # --- Database ---
+      # Using PostgreSQL for persistence (SQLite is default but not recommended for production)
+      DATABASE_ENABLED: "true"
+      DATABASE_PROVIDER: postgresql
+      DATABASE_CONNECTION_URI: "${DATABASE_CONNECTION_URI}"
+      DATABASE_SAVE_DATA_INSTANCE: "true"
+      DATABASE_SAVE_DATA_NEW_MESSAGE: "true"
+      DATABASE_SAVE_MESSAGE_UPDATE: "true"
+      DATABASE_SAVE_DATA_CONTACTS: "true"
+      DATABASE_SAVE_DATA_CHATS: "true"
+
+      # --- Redis cache ---
+      # Redis is used for session state and message caching
+      CACHE_REDIS_ENABLED: "true"
+      CACHE_REDIS_URI: "${CACHE_REDIS_URI}"
+      CACHE_REDIS_PREFIX_KEY: "evolution"
+
+      # --- Webhook global defaults ---
+      # These can be overridden per-instance via the API
+      WEBHOOK_GLOBAL_ENABLED: "false"
+      WEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS: "false"
+
+      # --- QR code ---
+      QRCODE_LIMIT: "30"
+
+      # --- Logging ---
+      LOG_LEVEL: "ERROR,WARN,INFO"
+
+    labels:
+      # Traefik routing — expose Evolution API Manager UI under its own subdomain
+      - "traefik.enable=true"
+      - "traefik.http.routers.evolution.rule=Host(`evolution.yourdomain.com`)"
+      - "traefik.http.routers.evolution.entrypoints=websecure"
+      - "traefik.http.routers.evolution.tls.certresolver=letsencrypt"
+      - "traefik.http.services.evolution.loadbalancer.server.port=8080"
+
+  redis:
+    image: redis:7-alpine
+    container_name: evolution_redis
+    restart: unless-stopped
+    networks:
+      - internal
+    volumes:
+      - redis_data:/data
+    # Persist Redis data to disk every 60s if at least 1 key changed
+    command: redis-server --save 60 1 --loglevel warning
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: evolution_postgres
+    restart: unless-stopped
+    networks:
+      - internal
+    environment:
+      POSTGRES_DB: evolution
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "<your_db_password>"   # replace with a strong password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # Only accept connections from within the internal network
+    # Do NOT expose port 5432 to the host unless needed for local debugging
+
+volumes:
+  evolution_data:
+  redis_data:
+  postgres_data:
+
+networks:
+  traefik_public:
+    external: true   # must be created before starting: docker network create traefik_public
+  internal:
+    driver: bridge
