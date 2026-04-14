@@ -33,7 +33,8 @@ I specialize in end-to-end automation: from AI-powered bots and self-hosted infr
 ## Contact
 
 - **Email**: 92pablocosta@gmail.com
-- **GitHub**: [github.com/pablo-costa](https://github.com/pablo-costa)
+- **GitHub**: [github.com/92pablocosta](https://github.com/92pablocosta)
+- **LinkedIn**: [linkedin.com/in/pablocosta-dev](https://www.linkedin.com/in/pablocosta-dev/)
 
 ---
 
