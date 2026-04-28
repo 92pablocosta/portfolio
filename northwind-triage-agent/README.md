@@ -101,8 +101,8 @@ Latest run in `outputs/results.json`:
 | `category` | 20.0 / 20 | 100.0% |
 | `priority` | 20.0 / 20 | 100.0% |
 | `route_to` | 20.0 / 20 | 100.0% |
-| `needs_human_review` | 15.0 / 20 | 75.0% |
-| **Strict accuracy** | **15 / 20** | **75.0%** |
+| `needs_human_review` | 17.0 / 20 | 85.0% |
+| **Strict accuracy** | **17 / 20** | **85.0%** |
 
 See `WRITEUP.md` for the agent design, final prompt, benchmark disagreements, failure analysis, tone assessment, and next-step recommendations.
 

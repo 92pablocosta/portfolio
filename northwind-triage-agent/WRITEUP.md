@@ -268,10 +268,6 @@ Rachel Ford asks for dishwasher repair. The agent correctly classified it as OUT
 
 Alex Henderson asks for bathroom renovation plumbing. The agent got category, priority, and routing right, but missed `needs_human_review = true`. The catalogue lists bathroom renovation plumbing as "from $4,500", and the described scope could easily exceed the $5,000 review threshold. This is a genuine agent miss: it treated the request as clear because the service exists, without considering likely final value.
 
-### MSG-009 — Agent: human review | Benchmark: no human review
-
-Linda M. reports a ducted heater failure after hours in winter. The agent matched BOOKING/P2/Dispatch but over-flagged for review. I understand the benchmark's stricter reading: the HVAC no-on-call rule gives a clear operational path, so no human review is needed. I still think the flag is defensible because after-hours winter heating plus no live HVAC coverage is exactly the sort of customer-expectation edge case where a human eye is cheap.
-
 ### MSG-010 — Agent: no human review | Benchmark: human review
 
 Marcus Webb asks about split-system servicing across eight strata units. The agent treated it as a standard residential quote and missed the ambiguity around "under 200m² per premises." The benchmark's QUOTE category is reasonable, but the review flag is important because the catalogue does not define whether "premises" means each unit or the whole block.
@@ -284,21 +280,13 @@ Robert Liang, conduct complaint about muddy boots and a short-tempered plumber. 
 
 ## 6. Agent Failures
 
-### MSG-008 and MSG-016 — needs_human_review false negatives (threshold logic)
+### MSG-008 — needs_human_review false negative (threshold logic)
 
-Both messages involve quotes that likely exceed $5,000 (bathroom renovation from $4,500, ducted aircon from $9,500). The agent correctly identifies the service and routes to Sales, but does not flag for review. The prompt states the $5,000 rule, but the agent appears to anchor on the catalogue's "from" price rather than inferring that the final quote will likely exceed the threshold. Fix: add an explicit instruction such as "if a catalogue 'from' price is near or above $5,000, or the requested scope is likely to push it over $5,000, flag for review." This makes the inference rule explicit rather than leaving it to the model's judgement.
+Alex Henderson asks for bathroom renovation plumbing. The catalogue lists it "from $4,500", and the described scope could easily exceed the $5,000 review threshold. The agent correctly identifies the service and routes to Sales, but anchors on the catalogue's "from" price rather than inferring the final quote will likely exceed the threshold. Fix: add an explicit instruction such as "if a catalogue 'from' price is near or above $5,000, or the requested scope is likely to push it over $5,000, flag for review." This makes the inference rule explicit rather than leaving it to the model's judgement.
 
 ### MSG-007 and MSG-010 — needs_human_review false negatives (borderline scope)
 
 Both messages sit on service-boundary edges: dishwasher repair is clearly excluded but adjacent to appliance installation, and the strata aircon request depends on an undefined "per premises" rule. The agent classified both correctly but treated the classification as enough. Fix: make the human-review rule more concrete: any request involving an excluded-but-adjacent service, strata/multi-unit scope, or undefined service-area constraint should be flagged even when the category is clear.
-
-### MSG-009 — category miss (QUOTE instead of BOOKING)
-
-Linda asks "can someone come tomorrow?" — a direct scheduling request. The agent returned QUOTE. The prompt's "when unsure between QUOTE and BOOKING, default to QUOTE" rule fired even though no price was requested and intent was clearly to book a visit. Fix: the default should only apply when the customer is explicitly asking for a price or estimate; a pure scheduling request with no pricing language should classify as BOOKING.
-
-### MSG-017 — needs_human_review false negative (upset customer)
-
-Robert's conduct complaint about muddy boots and a short-tempered plumber. The agent returned `needs_human_review = false`, reasoning that there was "no escalation in tone." But Robert explicitly writes "We are not happy" and the SOP flags "angry or distressed" customer as a review trigger. The customer is also following a neighbour referral, which makes a negative experience higher-stakes for retention. Fix: the prompt should include an example that "we are not happy" or equivalent mild but explicit dissatisfaction counts as a review trigger, not only aggressive language.
 
 ### MSG-004 — correct route, incorrect reasoning
 
@@ -326,6 +314,6 @@ MSG-013 (garbled submission) was correctly handled — the agent produced no dra
 
 **Document ingestion with Docling.** Right now the SOP, catalogue, and tone guide are encoded directly into the system prompt because that is the simplest reliable shape for a 1-2 hour take-home. In a production version, I would use Docling to convert the client PDFs into structured, auditable JSON/Markdown, then build the prompt context from those generated artifacts. I included this as an optional experiment in `scripts/experimental/convert_assets_docling.py` rather than a required dependency, because the core agent should stay lightweight while still showing the path to maintainable document ingestion.
 
-**Confidence-calibrated review flagging.** The current `needs_human_review` is binary and rule-based. A more robust version would have the model output a `confidence` score (0–1) per field alongside the decision, and automatically set `needs_human_review = true` when confidence on any hard field drops below a threshold. This would catch the MSG-007, MSG-008, MSG-010, and MSG-016 style misses without requiring explicit rule enumeration for every edge case.
+**Confidence-calibrated review flagging.** The current `needs_human_review` is binary and rule-based. A more robust version would have the model output a `confidence` score (0–1) per field alongside the decision, and automatically set `needs_human_review = true` when confidence on any hard field drops below a threshold. This would catch the MSG-007, MSG-008, and MSG-010 style misses without requiring explicit rule enumeration for every edge case.
 
 **Expanded eval dataset with adversarial cases.** The 20-message benchmark covers the main categories but undersamples the hard edges — multi-request messages, non-English inputs, borderline catalogue scope. I'd add 20–30 synthetic adversarial cases (e.g. a COMPLAINT that looks like a BOOKING, a QUOTE that's clearly OUT_OF_SCOPE, a message in Portuguese) and run the agent against those before any prompt change goes to production. The goal is a regression suite, not a benchmark to optimise against.
