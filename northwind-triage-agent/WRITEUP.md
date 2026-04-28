@@ -18,6 +18,8 @@ The agent is a single-prompt, single-model pipeline. One inbound message goes in
 - `pydantic>=2.0.0` — enforces the output contract at runtime; the model cannot return an invalid `category` or `priority` value
 - `python-dotenv` — keeps the API key out of source code
 
+**Model: `gpt-4o-mini`** — chosen deliberately over `gpt-4o` for this task. The input is short (one customer message), the output schema is fixed, and all classification rules are explicit in the prompt rather than requiring model inference from broad world knowledge. The structured-output constraint means the model cannot produce invalid field values regardless of capability. The tradeoff is that borderline cases requiring nuanced judgement (such as inferring whether a "from $4,500" quote will likely exceed $5,000) are slightly more likely to miss. A production version would default to `gpt-4o` for the ambiguous-case class, or add a confidence-scoring pass.
+
 **Structured output via `response_format`:** Instead of asking the model to "return JSON", we pass the Pydantic schema directly as `response_format=TriageOutput`. The OpenAI API then guarantees the response matches the schema or raises an error. This is more reliable than prompt-level JSON instructions, which can produce malformed output under edge cases (e.g. MSG-013, the garbled submission).
 
 ---
@@ -203,14 +205,14 @@ Tested against all 20 messages in `05_Inbound_Messages.json`, compared to `06_Be
 | `category` | 20.0 / 20 | 100.0% |
 | `priority` | 20.0 / 20 | 100.0% |
 | `route_to` | 20.0 / 20 | 100.0% |
-| `needs_human_review` | 15.0 / 20 | 75.0% |
-| **Strict accuracy (all 4 fields)** | **15 / 20** | **75.0%** |
+| `needs_human_review` | 17.0 / 20 | 85.0% |
+| **Strict accuracy (all 4 fields)** | **17 / 20** | **85.0%** |
 
 `route_to` scoring supports partial credit (0.5) for cases where the primary team is correct but a cc is missed, per the rubric. No partial route credit was needed in this run.
 
-**Where the agent is strong:** Category classification and priority assignment were perfect across all 20 messages, including edge cases — the Spanish-language emergency (MSG-018), the garbled submission (MSG-013), the appliance repair that looks like a booking (MSG-007), and the winter no-hot-water case (MSG-006). Routing followed directly from category and was also error-free.
+**Where the agent is strong:** Category, priority, and routing were all perfect across all 20 messages, including the hard edge cases — the Spanish-language emergency (MSG-018), the garbled submission (MSG-013), the appliance repair that looks like a booking (MSG-007), the winter no-hot-water case (MSG-006), and the dual-request message (MSG-016).
 
-**Where the agent slips:** `needs_human_review` was the weakest field (75%). Four misses were false negatives — MSG-007, MSG-008, MSG-010, and MSG-016 — where the agent failed to flag borderline catalogue scope, likely high-value quotes, or strata ambiguity. One miss was a false positive on MSG-009, where the agent over-flagged an after-hours HVAC issue even though the benchmark treats the no-on-call rule as enough structure for Dispatch.
+**Where the agent slips:** `needs_human_review` accounts for all three remaining misses, all false negatives: MSG-007 (appliance repair — clearly excluded but adjacent to installation), MSG-008 (bathroom renovation plumbing — catalogue lists "from $4,500", scope likely exceeds $5,000 threshold), and MSG-010 (strata multi-unit quote — ambiguous "per premises" boundary). In each case the agent classified the service correctly but did not flag the boundary condition warranting a human eye.
 
 ---
 
@@ -290,9 +292,17 @@ Both messages involve quotes that likely exceed $5,000 (bathroom renovation from
 
 Both messages sit on service-boundary edges: dishwasher repair is clearly excluded but adjacent to appliance installation, and the strata aircon request depends on an undefined "per premises" rule. The agent classified both correctly but treated the classification as enough. Fix: make the human-review rule more concrete: any request involving an excluded-but-adjacent service, strata/multi-unit scope, or undefined service-area constraint should be flagged even when the category is clear.
 
-### MSG-009 — needs_human_review false positive (over-caution)
+### MSG-009 — category miss (QUOTE instead of BOOKING)
 
-The agent flagged Linda's after-hours ducted heater message because it saw winter HVAC as borderline. The benchmark says no review because the SOP gives a direct rule: after-hours HVAC is P2 and Dispatch handles next-business-day allocation. Fix: clarify that "no on-call HVAC" is not by itself a human-review trigger when the request is a normal HVAC service within catalogue.
+Linda asks "can someone come tomorrow?" — a direct scheduling request. The agent returned QUOTE. The prompt's "when unsure between QUOTE and BOOKING, default to QUOTE" rule fired even though no price was requested and intent was clearly to book a visit. Fix: the default should only apply when the customer is explicitly asking for a price or estimate; a pure scheduling request with no pricing language should classify as BOOKING.
+
+### MSG-017 — needs_human_review false negative (upset customer)
+
+Robert's conduct complaint about muddy boots and a short-tempered plumber. The agent returned `needs_human_review = false`, reasoning that there was "no escalation in tone." But Robert explicitly writes "We are not happy" and the SOP flags "angry or distressed" customer as a review trigger. The customer is also following a neighbour referral, which makes a negative experience higher-stakes for retention. Fix: the prompt should include an example that "we are not happy" or equivalent mild but explicit dissatisfaction counts as a review trigger, not only aggressive language.
+
+### MSG-004 — correct route, incorrect reasoning
+
+The agent routed correctly to "Customer Care + Accounts" but stated in its reasoning that the message "involves a significant charge over $1,000." The invoice total was $720; the disputed amount was $150. Neither figure exceeds $1,000. The route was right for the right reason (complaint combined with billing dispute), but the stated justification was factually wrong. Worth noting: the SOP's $500 cc-threshold is not technically met here either — this is a judgement call the agent made correctly but couldn't articulate cleanly.
 
 ---
 

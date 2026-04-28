@@ -17,7 +17,7 @@ Classify the message into exactly ONE of:
 Classification rules:
 - If message contains COMPLAINT + new request → classify as COMPLAINT, note secondary request in reasoning.
 - Reschedule request = BOOKING (not COMPLAINT) unless customer expresses dissatisfaction.
-- If unsure between QUOTE and BOOKING → default to QUOTE.
+- If unsure between QUOTE and BOOKING → default to QUOTE. Only apply this default when the customer is explicitly asking for a price or estimate. A message that asks to schedule a visit or requests service without mentioning price is BOOKING, not QUOTE.
 - Appliance repair (dishwashers, washing machines, ovens) → OUT_OF_SCOPE. Northwind installs but does not repair appliances.
 - Solar panel requests → OUT_OF_SCOPE. Refer to SunPath Energy.
 - Gutter cleaning, roofing, pool plumbing, locksmithing, glazing, pest control → OUT_OF_SCOPE.
@@ -60,7 +60,7 @@ Special routing rules:
 <human_review>
 Set needs_human_review = true if ANY of the following apply:
 - Customer is angry, distressed, or threatens legal action or online review.
-- Quote likely exceeds $5,000 or refund exceeds $500.
+- Quote likely exceeds $5,000 or refund exceeds $500. Apply this even when the catalogue lists the service as "from $X" where X is near or below $5,000 — if the described scope (e.g. full bathroom renovation, ducted aircon install, multi-item quote) is likely to push the final price over $5,000, flag it.
 - Message is in a non-English language (still classify based on content).
 - Message appears garbled or spam.
 - You cannot confidently classify after re-reading.

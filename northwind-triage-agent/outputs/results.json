@@ -5,9 +5,9 @@
       "category": "BOOKING",
       "priority": "P3",
       "route_to": "Dispatch",
-      "draft_reply": "Hi Sarah — I understand the dripping tap in your ensuite can be annoying. We'll have someone from dispatch call you back within the day to schedule a time for the repair. — The Northwind team",
+      "draft_reply": "Hi Sarah — I understand the dripping tap is becoming annoying and may waste water. We'll have someone from dispatch call you back within the day to schedule a visit. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "This message clearly indicates a desire to schedule a service for a dripping tap, classifying it as a booking. The issue is not urgent or a safety risk, placing it at priority P3. There are no indicators for needing human review."
+      "reasoning": "This message is categorized as a BOOKING because the customer is clearly requesting a service to fix a dripping tap. The priority is set to P3 as it's a non-urgent issue involving a dripping tap, and there are no signs of an emergency. No human review is necessary as the request is straightforward."
     },
     "benchmark": {
       "id": "MSG-001",
@@ -42,7 +42,7 @@
       "route_to": "Dispatch",
       "draft_reply": "Hi Tom — water leak is a priority for us. Someone from dispatch will call you within the hour. In the meantime, if you can shut off the mains at the meter, that'll buy us time. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "This message clearly indicates an active water leak causing damage, which categorizes it as an EMERGENCY. The priority is P1 because there is a risk of property damage from water leaking through the ceiling. There are no other complexities that require human review."
+      "reasoning": "This message clearly indicates an active water leak, which poses a risk to property, classifying it as an EMERGENCY. The priority is P1 due to the immediate risk and potential damage. There's no need for human review as the situation is straightforward."
     },
     "benchmark": {
       "id": "MSG-002",
@@ -75,9 +75,9 @@
       "category": "OUT_OF_SCOPE",
       "priority": "P3",
       "route_to": "Customer Care",
-      "draft_reply": "Hi Mei — gutter cleaning isn't something we cover, sorry. A local specialist will be able to help with that. — The Northwind team",
+      "draft_reply": "Hi Mei — gutter cleaning isn't something we cover, sorry. A local roofing specialist will be able to help with that. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "I classified this message as OUT_OF_SCOPE because gutter cleaning is not a service that Northwind Home Services offers. The priority is P3 since it is a standard enquiry and doesn't present any urgent issues. There were no factors indicating the need for human review."
+      "reasoning": "The request is for gutter cleaning, which is outside the services Northwind offers. I chose P3 as it is a standard enquiry but not urgent. There was no need for human review as the message was clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-003",
@@ -110,9 +110,9 @@
       "category": "COMPLAINT",
       "priority": "P2",
       "route_to": "Customer Care + Accounts",
-      "draft_reply": "Hi Daniel — I understand your frustration about the unexpected charge on your invoice. I've escalated this to our Customer Care team, who will reach out to you shortly to clarify and resolve the issue. — The Northwind team",
+      "draft_reply": "Hi Daniel — I understand your frustration regarding the unexpected invoice amount, and we want to help you resolve this. I've forwarded your concern to our Customer Care team, and they'll reach out to you within the next few hours to discuss the charge in detail. — The Northwind team",
       "needs_human_review": true,
-      "reasoning": "I classified this message as a COMPLAINT due to the customer's unhappiness regarding the invoiced amount exceeding the quoted price. The priority is P2 since it involves a billing dispute over $1,000. Needs human review because the customer is considering leaving a negative review if not resolved."
+      "reasoning": "This message falls into the COMPLAINT category due to the customer's dissatisfaction with the billing after a service. The mention of a review indicates a high level of distress, warranting a P2 priority for the complaint about a charge exceeding $1,000. Needs human review due to the potential for escalation in customer sentiment."
     },
     "benchmark": {
       "id": "MSG-004",
@@ -145,9 +145,9 @@
       "category": "QUOTE",
       "priority": "P3",
       "route_to": "Sales",
-      "draft_reply": "Hi Priya — I see you’re looking to install an EV charger at your home. We’ll get a quote and information on our lead times sent to you within one business day. — The Northwind team",
+      "draft_reply": "Hi Priya — I see you're interested in installing an EV charger at your home. We'll prepare a quote and get back to you within one business day regarding the lead times. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "This message is classified as a QUOTE because the customer is requesting a price for a service not yet agreed upon. The situation isn’t urgent, so it receives a standard priority level of P3."
+      "reasoning": "The request is specifically for a quote about installing an EV charger, which aligns with the QUOTE category. There are no urgent safety issues, so it's classified as P3 for the standard pricing and lead time inquiry. No need for human review as the request is clear and within the service scope."
     },
     "benchmark": {
       "id": "MSG-005",
@@ -180,9 +180,9 @@
       "category": "EMERGENCY",
       "priority": "P1",
       "route_to": "Dispatch",
-      "draft_reply": "Hi Kevin — no hot water is a priority for us, especially with kids in the freezing weather. Someone from dispatch will call you within the hour to sort this out. — The Northwind team",
+      "draft_reply": "Hi Kevin — no hot water is a priority for us, especially with kids in the cold. Someone from dispatch will call you within the hour to arrange a visit to get this sorted. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "I classified this as EMERGENCY because the lack of hot water, particularly in cold weather and with children in the house, poses a significant risk to comfort and safety. The priority is P1 since it requires immediate attention. There are no factors that necessitate human review."
+      "reasoning": "This message describes an active situation where the customer has no hot water, which poses a safety risk given the cold weather and presence of children. Therefore, it is classified as EMERGENCY (P1). There are no other factors that would necessitate human review."
     },
     "benchmark": {
       "id": "MSG-006",
@@ -215,9 +215,9 @@
       "category": "OUT_OF_SCOPE",
       "priority": "P3",
       "route_to": "Customer Care",
-      "draft_reply": "Hi Rachel — appliance repair isn't a service we offer. I recommend finding a local specialist who can assist with your dishwasher issue. — The Northwind team",
+      "draft_reply": "Hi Rachel — we don't offer appliance repair services, including for dishwashers. I recommend finding a local appliance specialist to help with this issue. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "The message relates to a dishwasher repair, which is outside Northwind's service offerings. As a result, it falls into the OUT_OF_SCOPE category. The priority level is P3 because it doesn't represent an immediate risk, and the customer is not dissatisfied with our service, just seeking help for a non-covered issue."
+      "reasoning": "The message is classified as OUT_OF_SCOPE because Northwind does not repair appliances like dishwashers. The priority is P3 as the request is not urgent, and there is no imminent danger. There is no need for human review as the classification is clear."
     },
     "benchmark": {
       "id": "MSG-007",
@@ -248,9 +248,9 @@
       "category": "QUOTE",
       "priority": "P3",
       "route_to": "Sales",
-      "draft_reply": "Hi Alex — great to hear about your bathroom renovation plans. We can definitely provide a quote for the plumbing scope you've outlined. I'll have someone from our sales team get back to you within one business day to discuss further and arrange for your architect's plans. — The Northwind team",
+      "draft_reply": "Hi Alex — I appreciate you reaching out about your bathroom renovation plumbing. We can certainly provide a quote for the scope you mentioned. Expect to hear back from our sales team within one business day. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "I classified this as a QUOTE because the customer is requesting a price estimate for plumbing work that has not yet been agreed upon. The priority level is P3 as this is a standard enquiry. No human review is necessary because the request is clear and straightforward."
+      "reasoning": "The request specifically asks for a quote for plumbing work related to a full bathroom renovation, which fits the CATEGORY of QUOTE. The priority level is P3 as this is a standard inquiry about future work without immediate urgency. There are no elements in the message that necessitate human review."
     },
     "benchmark": {
       "id": "MSG-008",
@@ -283,9 +283,9 @@
       "category": "BOOKING",
       "priority": "P2",
       "route_to": "Dispatch",
-      "draft_reply": "Hi Linda — I understand your heater isn't working and blowing cold air is frustrating. We'll have someone from dispatch call you back tomorrow to arrange a service visit. — The Northwind team",
-      "needs_human_review": true,
-      "reasoning": "I classified this as a BOOKING since Linda is requesting someone to come and fix her heater, which indicates a known service. The priority is P2 because it involves a loss of essential function, and given it's a ducted system, it's also a borderline case needing human review to ensure appropriate action is taken."
+      "draft_reply": "Hi Linda — I understand your heater isn't working and blowing cold air isn't ideal. We'll have someone from dispatch call you back shortly to arrange a visit for tomorrow. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this as a BOOKING since the customer is requesting a service visit for a known issue with their heater. The priority level is P2 as there is a loss of essential function but no immediate danger reported. There is no need for human review since the request is straightforward and within scope."
     },
     "benchmark": {
       "id": "MSG-009",
@@ -309,7 +309,7 @@
       "category": 1.0,
       "priority": 1.0,
       "route_to": 1.0,
-      "needs_human_review": 0.0
+      "needs_human_review": 1.0
     }
   },
   {
@@ -318,9 +318,9 @@
       "category": "QUOTE",
       "priority": "P3",
       "route_to": "Sales",
-      "draft_reply": "Hi Marcus — servicing the split-system aircons in your block is a request we can definitely help with. I'll pass your details to our sales team, and they will get back to you within one business day with the information you need. — The Northwind team",
+      "draft_reply": "Hi Marcus — we can certainly provide a quote for servicing the split-system air conditioners in the units. I'll have our sales team follow up with you shortly to discuss the details and pricing. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "I classified this as a QUOTE because the customer is seeking an estimate for a service not yet agreed upon. The priority level is P3 as it is a standard enquiry without any immediate risk or urgency. There are no flags for human review as the message is clear and straightforward."
+      "reasoning": "The message is a quote request for servicing air conditioning units, which falls under the category of QUOTE. Since it's a standard inquiry and doesn't indicate urgent work, I've classified it with priority P3. Needs human review is not necessary as the request is clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-010",
@@ -353,7 +353,7 @@
       "route_to": "Customer Care",
       "draft_reply": "Hi Jess — solar isn't something we install, but our referral partner SunPath Energy handles that and we've had good feedback from customers we've sent their way. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "The request is clearly for solar panel installation, a service not offered by Northwind. Therefore, it fits under OUT_OF_SCOPE. The priority is set to P3 as it is a standard inquiry. No need for human review since the request is straightforward."
+      "reasoning": "The request is for solar panel installation, which is outside the services Northwind provides. Therefore, it's classified as OUT_OF_SCOPE. The priority is P3 since it's a standard enquiry. No human review is necessary as the message is clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-011",
@@ -385,9 +385,9 @@
       "category": "BOOKING",
       "priority": "P3",
       "route_to": "Dispatch",
-      "draft_reply": "Hi George — I understand that your schedule has changed and you need to reschedule the booking for your hot water service replacement. We'll have someone from dispatch get in touch with you within the day to confirm a new time. — The Northwind team",
+      "draft_reply": "Hi George — I understand you need to reschedule your hot water service replacement. We'll have someone from Dispatch reach out within the next business day to confirm the new time. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "The message contains a request to reschedule an existing booking, which falls into the BOOKING category. Since the customer is not expressing dissatisfaction, it does not qualify as a COMPLAINT. The priority is P3 as it is a non-urgent booking update."
+      "reasoning": "This message is categorized as a BOOKING because George is requesting to reschedule an existing appointment without expressing dissatisfaction. The priority is P3 since it's a standard request without any urgent concerns. There’s no need for human review as the message is clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-012",
@@ -421,7 +421,7 @@
       "route_to": "Customer Care",
       "draft_reply": "",
       "needs_human_review": true,
-      "reasoning": "The message does not contain understandable content, which makes it impossible to classify definitively. As it appears garbled or spam-like, I've flagged it for human review to ensure proper handling."
+      "reasoning": "The message appears to be garbled and does not provide any relevant information about the service request. Given the unclear content, I opted for OUT_OF_SCOPE and flagged it for human review to ensure appropriate handling."
     },
     "benchmark": {
       "id": "MSG-013",
@@ -451,9 +451,9 @@
       "category": "EMERGENCY",
       "priority": "P1",
       "route_to": "Dispatch",
-      "draft_reply": "Hi Hannah — the burning smell from your power point is a serious concern and will require immediate attention. Someone from our dispatch team will call you within the hour to arrange for a technician to come and assess the situation. In the meantime, it's good that you've turned off the circuit. — The Northwind team",
+      "draft_reply": "Hi Hannah — the burning smell near your power point is a serious concern. Someone from dispatch will call you within the hour to respond urgently. In the meantime, please keep the circuit off to ensure safety. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "This message clearly indicates an active safety risk with the burning smell and warm powerpoint, classifying it as an EMERGENCY. Given the immediate nature of the risk, the priority is P1, and it will be routed to Dispatch for urgent action."
+      "reasoning": "This message clearly describes an active safety risk due to a burning smell from a power point. As such, it qualifies as an EMERGENCY and falls under the P1 priority for immediate action. It does not require human review as the situation is straightforward."
     },
     "benchmark": {
       "id": "MSG-014",
@@ -486,9 +486,9 @@
       "category": "BILLING",
       "priority": "P3",
       "route_to": "Accounts",
-      "draft_reply": "Hi Ben — I understand it's concerning when payment status isn't updated. Our accounts team will verify your payment and get back to you within one business day. — The Northwind team",
+      "draft_reply": "Hi Ben — I understand that you're looking for confirmation of your payment for invoice INV-44903. Our accounts team will look into this and get back to you within one business day. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "This message clearly pertains to a billing inquiry regarding the status of a payment, thus categorized as BILLING. The situation does not indicate any immediate urgency, just a request for confirmation, leading to a P3 priority. There are no additional flags to necessitate human review."
+      "reasoning": "This message is classified as BILLING since the customer is inquiring about the status of a paid invoice. The priority level is P3, as it is a standard enquiry regarding payment confirmation without an immediate issue. No human review is necessary because the request is clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-015",
@@ -520,9 +520,9 @@
       "category": "QUOTE",
       "priority": "P3",
       "route_to": "Sales",
-      "draft_reply": "Hi Olivia — I understand you're looking to get a quote for a switchboard upgrade and possibly a ducted aircon system. We'll have a sales representative reach out within one business day to arrange a visit and discuss both quotes. — The Northwind team",
-      "needs_human_review": false,
-      "reasoning": "This message is classified as QUOTE because the customer is asking for pricing on two services not yet agreed upon. The priority is P3 since it is a standard enquiry, and there are no immediate risks or previous complaints that would escalate the urgency."
+      "draft_reply": "Hi Olivia — I understand you're looking for a quote for a switchboard upgrade and ducted air conditioning. We'll pass this on to our sales team, and someone will be in touch within one business day to arrange a visit. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "I classified this as a QUOTE because the customer is requesting estimates for services not yet agreed to. The priority is P3 as there are no immediate safety concerns, and prices for both services are variable and require assessment. Needs human review since the request for ducted air conditioning may approach over $5,000, raising a flag for potential high costs."
     },
     "benchmark": {
       "id": "MSG-016",
@@ -545,7 +545,7 @@
       "category": 1.0,
       "priority": 1.0,
       "route_to": 1.0,
-      "needs_human_review": 0.0
+      "needs_human_review": 1.0
     }
   },
   {
@@ -554,9 +554,9 @@
       "category": "COMPLAINT",
       "priority": "P2",
       "route_to": "Customer Care",
-      "draft_reply": "Hi Robert — I'm sorry to hear about the plumber's behaviour; that's not acceptable and not what we aim for at Northwind. I've passed your concerns to our Customer Care team, who will reach out to you shortly to discuss this further. — The Northwind team",
+      "draft_reply": "Hi Robert — I can understand your frustration regarding the plumber's behavior and the mess left behind. I've passed this to our Customer Care team, who will reach out to you to discuss your experience and work through a resolution. — The Northwind team",
       "needs_human_review": true,
-      "reasoning": "This message clearly falls under the COMPLAINT category due to dissatisfaction with the service and specific criticisms about the plumber's conduct. The customer mentioned a charge of $280, which means it does not trigger the billing complaint rule. The needs_human_review flag is set because the nature of the complaint implies the potential for escalation."
+      "reasoning": "This message falls under COMPLAINT due to the customer's dissatisfaction with the service provided by the plumber and the specific mention of conduct issues. The job invoice exceeds $1,000, which elevates the priority to P2 for faster response. Needs human review due to the customer expressing unhappiness and expecting a discussion about conduct."
     },
     "benchmark": {
       "id": "MSG-017",
@@ -589,9 +589,9 @@
       "category": "EMERGENCY",
       "priority": "P1",
       "route_to": "Dispatch",
-      "draft_reply": "Hi — water is actively leaking from your hot water system, which is a priority for us. Someone from dispatch will call you within the hour to assist you. In the meantime, if you can turn off the mains at the meter, that'll help. — The Northwind team",
+      "draft_reply": "Hi — water leaking from the hot water unit is a priority for us. Someone from dispatch will call you within the hour. In the meantime, if you can turn off the mains water supply, it will help reduce the damage. — The Northwind team",
       "needs_human_review": true,
-      "reasoning": "The message indicates an active water leak, classifying it as an EMERGENCY and therefore a P1 priority. Since the message is in Spanish, it also requires human review due to the language barrier."
+      "reasoning": "The message indicates an active leak from the hot water system, categorizing it as an EMERGENCY with a P1 priority. It requires immediate attention, and the urgency in the request suggests a distressing situation. Needs human review due to the language being not English, and I need to ensure proper communication."
     },
     "benchmark": {
       "id": "MSG-018",
@@ -623,9 +623,9 @@
       "category": "BILLING",
       "priority": "P2",
       "route_to": "Accounts",
-      "draft_reply": "Hi Catherine — I understand that you're frustrated about the delay in your refund for the cancelled switchboard upgrade. I've escalated this to our Accounts team, who will look into it and get back to you within the day. — The Northwind team",
+      "draft_reply": "Hi Catherine — I understand your frustration about the delay in your refund. I've flagged this with our accounts team, and someone will follow up with you within the day to resolve your issue. — The Northwind team",
       "needs_human_review": true,
-      "reasoning": "This message falls under the BILLING category as it concerns a refund for a cancelled job. The priority level is P2 because it involves a significant charge ($720) and the customer is clearly upset about the delay in processing. Needs human review due to the mentioned refund exceeding $500 and Catherine's distress regarding the situation."
+      "reasoning": "The message falls under BILLING as it involves a refund request that has not been processed in the expected timeframe. Priority is set to P2 because the refund amount is $720, which qualifies for higher urgency. Needs human review due to the customer's distress and the potential complexity of the refund process."
     },
     "benchmark": {
       "id": "MSG-019",
@@ -657,9 +657,9 @@
       "category": "QUOTE",
       "priority": "P3",
       "route_to": "Sales",
-      "draft_reply": "Hi Nathan — I understand you're looking to get a split system installed in your home office. We'll provide you with a rough quote based on the information given, but a site visit is still advisable to account for the exposed brick wall. Expect to hear back from our sales team within the day. — The Northwind team",
+      "draft_reply": "Hi Nathan — thanks for reaching out about the split system installation. We'll need to arrange a site visit to provide you with an accurate quote since the exposed brick wall could affect the installation. A member of our sales team will get in touch within the day to discuss the process further. — The Northwind team",
       "needs_human_review": false,
-      "reasoning": "I classified this as a QUOTE since the customer is asking for an estimate and the process for installation. The priority is P3 as it's a standard inquiry with no immediate urgency. There are no indicators that this requires human review."
+      "reasoning": "The customer's message asks for a quote based on room size and notes installation specifics, which falls into the QUOTE category. Since this is a standard inquiry and not urgent, it merits a P3 priority. There's no need for human review as the request is clear and straightforward."
     },
     "benchmark": {
       "id": "MSG-020",
