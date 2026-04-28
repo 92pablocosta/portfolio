@@ -1,0 +1,70 @@
+{
+  "source_file": "04_Tone_and_Style_Guide.pdf",
+  "title": "Tone &amp; Style Guide - Customer Communications",
+  "raw_docling_json": "assets/converted_json/docling_raw/04_Tone_and_Style_Guide.json",
+  "page_count": 2,
+  "markdown": "## Tone &amp; Style Guide - Customer Communications\n\nNorthwind Home Services · Use for all written replies, drafts, and templates\n\n## How Northwind sounds\n\nWe're a residential trades business. Most of our customers contact us because something has gone wrong in their home - sometimes mildly annoying, sometimes genuinely stressful. Our tone needs to match that. We sound like a competent neighbour, not a call centre.\n\n## Three rules of voice:\n\n- Plain, not formal. We say 'we'll send someone out', not 'we will dispatch a service representative'.\n- Specific, not generic. Reference what the customer actually said. Don't open with 'Thank you for contacting Northwind'.\n- Honest, not performative. If we can't help, say so plainly. Don't apologise four times.\n\n## Length\n\nFirst-response replies should be 2-4 sentences . Anything longer feels like a corporate form letter. The goal is to acknowledge, set an expectation, and end. The tradesperson or team lead handles detail when they call back.\n\n## Greetings &amp; sign-offs\n\n- Open with the customer's first name if we have it. If not, no greeting at all - go straight in.\n- Sign off with 'The Northwind team' for first responses. Individual names are reserved for follow-ups from a named tradesperson.\n- Never use 'Dear', 'Kind regards', or 'Yours sincerely'. They're too formal for us.\n\n## Examples\n\n## Booking confirmation:\n\n3 \"Hi Sarah - got your message about the dripping tap in the ensuite. We'll have someone call you back within the day to lock in a time. - The Northwind team\"\n\n7 \"Dear Sarah, Thank you for contacting Northwind Home Services. We have received your enquiry regarding plumbing services and a member of our team will be in touch at the earliest convenience.\"\n\n## Emergency response:\n\n3 \"Hi Tom - water leak is a priority for us. Someone from dispatch will call you within the hour. In the\n\nmeantime, if you can shut off the mains at the meter, that'll buy us time. - The Northwind team\"\n\n7 \"Hi Tom, We are sorry to hear about your situation. Please rest assured that we will do our best to assist you as quickly as possible. Our team will be in touch shortly.\"\n\n## Out of scope:\n\n3 \"Hi Mei - gutter cleaning isn't something we cover, sorry. Have a look at Allroof Services in your area; they handle that kind of work and we've had good feedback from customers we've referred. The Northwind team\"\n\n7 \"Unfortunately, gutter cleaning falls outside the scope of services we are able to provide at this time. We apologise for any inconvenience this may cause.\"\n\n## Words and phrases to avoid\n\n| Don't say                              | Say instead                                            |\n|----------------------------------------|--------------------------------------------------------|\n| At your earliest convenience           | Today / tomorrow / by Friday                           |\n| We will endeavour to                   | We'll                                                  |\n| Apologies for any inconvenience caused | Sorry about that -here's what we'll do                 |\n| Please rest assured                    | (just delete it)                                       |\n| Service representative                 | Tradie / plumber / electrician / someone from dispatch |\n| Kindly                                 | Please (or nothing)                                    |\n| Reach out                              | Get in touch / call / email                            |\n| Thank you for contacting Northwind     | (skip the opener and acknowledge the actual issue)     |\n\n## Hard rules\n\n- Never quote a price unless the catalogue lists it as fixed .\n- Never name a specific tradesperson in a first response.\n- Never promise an exact time - give a window or an SLA.\n- Never use exclamation marks. We're warm, not enthusiastic.\n- Never use emoji.\n\n## When the customer is upset\n\nAcknowledge it directly in the first sentence. Don't bury it under pleasantries. A complaint reply should never read like a booking reply with the word 'sorry' added.\n\n3 \"Hi Dan - that's a frustrating experience and not what we want for our customers. I've passed this to our Customer Care lead, who'll call you back today to work through it with you. - The Northwind team\"",
+  "plain_text": "Tone & Style Guide - Customer Communications\n\nNorthwind Home Services · Use for all written replies, drafts, and templates\n\nHow Northwind sounds\n\nWe're a residential trades business. Most of our customers contact us because something has gone wrong in their home - sometimes mildly annoying, sometimes genuinely stressful. Our tone needs to match that. We sound like a competent neighbour, not a call centre.\n\nThree rules of voice:\n\n- Plain, not formal. We say 'we'll send someone out', not 'we will dispatch a service representative'.\n- Specific, not generic. Reference what the customer actually said. Don't open with 'Thank you for contacting Northwind'.\n- Honest, not performative. If we can't help, say so plainly. Don't apologise four times.\n\nLength\n\nFirst-response replies should be 2-4 sentences . Anything longer feels like a corporate form letter. The goal is to acknowledge, set an expectation, and end. The tradesperson or team lead handles detail when they call back.\n\nGreetings & sign-offs\n\n- Open with the customer's first name if we have it. If not, no greeting at all - go straight in.\n- Sign off with 'The Northwind team' for first responses. Individual names are reserved for follow-ups from a named tradesperson.\n- Never use 'Dear', 'Kind regards', or 'Yours sincerely'. They're too formal for us.\n\nExamples\n\nBooking confirmation:\n\n3 \"Hi Sarah - got your message about the dripping tap in the ensuite. We'll have someone call you back within the day to lock in a time. - The Northwind team\"\n\n7 \"Dear Sarah, Thank you for contacting Northwind Home Services. We have received your enquiry regarding plumbing services and a member of our team will be in touch at the earliest convenience.\"\n\nEmergency response:\n\n3 \"Hi Tom - water leak is a priority for us. Someone from dispatch will call you within the hour. In the\n\nmeantime, if you can shut off the mains at the meter, that'll buy us time. - The Northwind team\"\n\n7 \"Hi Tom, We are sorry to hear about your situation. Please rest assured that we will do our best to assist you as quickly as possible. Our team will be in touch shortly.\"\n\nOut of scope:\n\n3 \"Hi Mei - gutter cleaning isn't something we cover, sorry. Have a look at Allroof Services in your area; they handle that kind of work and we've had good feedback from customers we've referred. The Northwind team\"\n\n7 \"Unfortunately, gutter cleaning falls outside the scope of services we are able to provide at this time. We apologise for any inconvenience this may cause.\"\n\nWords and phrases to avoid\n\n| Don't say                              | Say instead                                            |\n|----------------------------------------|--------------------------------------------------------|\n| At your earliest convenience           | Today / tomorrow / by Friday                           |\n| We will endeavour to                   | We'll                                                  |\n| Apologies for any inconvenience caused | Sorry about that -here's what we'll do                 |\n| Please rest assured                    | (just delete it)                                       |\n| Service representative                 | Tradie / plumber / electrician / someone from dispatch |\n| Kindly                                 | Please (or nothing)                                    |\n| Reach out                              | Get in touch / call / email                            |\n| Thank you for contacting Northwind     | (skip the opener and acknowledge the actual issue)     |\n\nHard rules\n\n- Never quote a price unless the catalogue lists it as fixed .\n- Never name a specific tradesperson in a first response.\n- Never promise an exact time - give a window or an SLA.\n- Never use exclamation marks. We're warm, not enthusiastic.\n- Never use emoji.\n\nWhen the customer is upset\n\nAcknowledge it directly in the first sentence. Don't bury it under pleasantries. A complaint reply should never read like a booking reply with the word 'sorry' added.\n\n3 \"Hi Dan - that's a frustrating experience and not what we want for our customers. I've passed this to our Customer Care lead, who'll call you back today to work through it with you. - The Northwind team\"",
+  "sections": [
+    {
+      "heading": "Tone &amp; Style Guide - Customer Communications",
+      "level": 2,
+      "content": "Northwind Home Services · Use for all written replies, drafts, and templates"
+    },
+    {
+      "heading": "How Northwind sounds",
+      "level": 2,
+      "content": "We're a residential trades business. Most of our customers contact us because something has gone wrong in their home - sometimes mildly annoying, sometimes genuinely stressful. Our tone needs to match that. We sound like a competent neighbour, not a call centre."
+    },
+    {
+      "heading": "Three rules of voice:",
+      "level": 2,
+      "content": "- Plain, not formal. We say 'we'll send someone out', not 'we will dispatch a service representative'.\n- Specific, not generic. Reference what the customer actually said. Don't open with 'Thank you for contacting Northwind'.\n- Honest, not performative. If we can't help, say so plainly. Don't apologise four times."
+    },
+    {
+      "heading": "Length",
+      "level": 2,
+      "content": "First-response replies should be 2-4 sentences . Anything longer feels like a corporate form letter. The goal is to acknowledge, set an expectation, and end. The tradesperson or team lead handles detail when they call back."
+    },
+    {
+      "heading": "Greetings &amp; sign-offs",
+      "level": 2,
+      "content": "- Open with the customer's first name if we have it. If not, no greeting at all - go straight in.\n- Sign off with 'The Northwind team' for first responses. Individual names are reserved for follow-ups from a named tradesperson.\n- Never use 'Dear', 'Kind regards', or 'Yours sincerely'. They're too formal for us."
+    },
+    {
+      "heading": "Examples",
+      "level": 2,
+      "content": ""
+    },
+    {
+      "heading": "Booking confirmation:",
+      "level": 2,
+      "content": "3 \"Hi Sarah - got your message about the dripping tap in the ensuite. We'll have someone call you back within the day to lock in a time. - The Northwind team\"\n\n7 \"Dear Sarah, Thank you for contacting Northwind Home Services. We have received your enquiry regarding plumbing services and a member of our team will be in touch at the earliest convenience.\""
+    },
+    {
+      "heading": "Emergency response:",
+      "level": 2,
+      "content": "3 \"Hi Tom - water leak is a priority for us. Someone from dispatch will call you within the hour. In the\n\nmeantime, if you can shut off the mains at the meter, that'll buy us time. - The Northwind team\"\n\n7 \"Hi Tom, We are sorry to hear about your situation. Please rest assured that we will do our best to assist you as quickly as possible. Our team will be in touch shortly.\""
+    },
+    {
+      "heading": "Out of scope:",
+      "level": 2,
+      "content": "3 \"Hi Mei - gutter cleaning isn't something we cover, sorry. Have a look at Allroof Services in your area; they handle that kind of work and we've had good feedback from customers we've referred. The Northwind team\"\n\n7 \"Unfortunately, gutter cleaning falls outside the scope of services we are able to provide at this time. We apologise for any inconvenience this may cause.\""
+    },
+    {
+      "heading": "Words and phrases to avoid",
+      "level": 2,
+      "content": "| Don't say                              | Say instead                                            |\n|----------------------------------------|--------------------------------------------------------|\n| At your earliest convenience           | Today / tomorrow / by Friday                           |\n| We will endeavour to                   | We'll                                                  |\n| Apologies for any inconvenience caused | Sorry about that -here's what we'll do                 |\n| Please rest assured                    | (just delete it)                                       |\n| Service representative                 | Tradie / plumber / electrician / someone from dispatch |\n| Kindly                                 | Please (or nothing)                                    |\n| Reach out                              | Get in touch / call / email                            |\n| Thank you for contacting Northwind     | (skip the opener and acknowledge the actual issue)     |"
+    },
+    {
+      "heading": "Hard rules",
+      "level": 2,
+      "content": "- Never quote a price unless the catalogue lists it as fixed .\n- Never name a specific tradesperson in a first response.\n- Never promise an exact time - give a window or an SLA.\n- Never use exclamation marks. We're warm, not enthusiastic.\n- Never use emoji."
+    },
+    {
+      "heading": "When the customer is upset",
+      "level": 2,
+      "content": "Acknowledge it directly in the first sentence. Don't bury it under pleasantries. A complaint reply should never read like a booking reply with the word 'sorry' added.\n\n3 \"Hi Dan - that's a frustrating experience and not what we want for our customers. I've passed this to our Customer Care lead, who'll call you back today to work through it with you. - The Northwind team\""
+    }
+  ]
+}

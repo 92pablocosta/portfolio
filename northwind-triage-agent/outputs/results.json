@@ -1,0 +1,688 @@
+[
+  {
+    "id": "MSG-001",
+    "agent": {
+      "category": "BOOKING",
+      "priority": "P3",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi Sarah — I understand the dripping tap in your ensuite can be annoying. We'll have someone from dispatch call you back within the day to schedule a time for the repair. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message clearly indicates a desire to schedule a service for a dripping tap, classifying it as a booking. The issue is not urgent or a safety risk, placing it at priority P3. There are no indicators for needing human review."
+    },
+    "benchmark": {
+      "id": "MSG-001",
+      "category": "BOOKING",
+      "priority": "P3",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "specific reference to the dripping tap",
+        "uses customer first name (Sarah)",
+        "states next step (someone will call to book a time)"
+      ],
+      "draft_reply_must_not_include": [
+        "specific price quote",
+        "exclamation marks",
+        "named tradesperson"
+      ],
+      "notes": "Straightforward booking. Tap washer replacement is in catalogue at $120 fixed, but the SOP and tone guide both say not to quote in a first response unless directly asked. Could arguably be QUOTE if you read 'book someone to come and look' as estimate-seeking — but the customer says 'book', so BOOKING."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-002",
+    "agent": {
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi Tom — water leak is a priority for us. Someone from dispatch will call you within the hour. In the meantime, if you can shut off the mains at the meter, that'll buy us time. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message clearly indicates an active water leak causing damage, which categorizes it as an EMERGENCY. The priority is P1 because there is a risk of property damage from water leaking through the ceiling. There are no other complexities that require human review."
+    },
+    "benchmark": {
+      "id": "MSG-002",
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges active leak",
+        "states someone will call within the hour",
+        "practical interim advice (e.g. shut off mains)"
+      ],
+      "draft_reply_must_not_include": [
+        "price quote",
+        "promises of next-day service",
+        "generic 'we will be in touch shortly' phrasing"
+      ],
+      "notes": "Active water through ceiling, after-hours SMS. Textbook P1 EMERGENCY. SOP says EMERGENCY plumbing has on-call tradies and goes to Dispatch."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-003",
+    "agent": {
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "draft_reply": "Hi Mei — gutter cleaning isn't something we cover, sorry. A local specialist will be able to help with that. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this message as OUT_OF_SCOPE because gutter cleaning is not a service that Northwind Home Services offers. The priority is P3 since it is a standard enquiry and doesn't present any urgent issues. There were no factors indicating the need for human review."
+    },
+    "benchmark": {
+      "id": "MSG-003",
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "states gutter cleaning is not offered",
+        "polite — does not over-apologise",
+        "ideally suggests the customer try elsewhere"
+      ],
+      "draft_reply_must_not_include": [
+        "price quote",
+        "promise to send a quote anyway",
+        "exclamation marks"
+      ],
+      "notes": "Catalogue explicitly excludes roofing and gutter work. OUT_OF_SCOPE → Customer Care per SOP routing rules."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-004",
+    "agent": {
+      "category": "COMPLAINT",
+      "priority": "P2",
+      "route_to": "Customer Care + Accounts",
+      "draft_reply": "Hi Daniel — I understand your frustration about the unexpected charge on your invoice. I've escalated this to our Customer Care team, who will reach out to you shortly to clarify and resolve the issue. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "I classified this message as a COMPLAINT due to the customer's unhappiness regarding the invoiced amount exceeding the quoted price. The priority is P2 since it involves a billing dispute over $1,000. Needs human review because the customer is considering leaving a negative review if not resolved."
+    },
+    "benchmark": {
+      "id": "MSG-004",
+      "category": "COMPLAINT",
+      "priority": "P2",
+      "route_to": "Customer Care + Accounts",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "directly acknowledges the billing surprise",
+        "states it will be reviewed and someone will call back today",
+        "does not promise a refund or admit fault prematurely"
+      ],
+      "draft_reply_must_not_include": [
+        "blame on the customer",
+        "denial of the surcharge before review",
+        "exclamation marks"
+      ],
+      "notes": "COMPLAINT involving billing dispute. Disputed amount is $150, which is under the SOP's $500 threshold for cc'ing Accounts — but the SOP's $1,000 P2 threshold for complaint priority is also not met (job total is $720). Reasonable answers: P2 because customer threatens online review (review-trigger language is in the SOP's flag list), or P3 by strict letter of the SOP. We've gone P2. Either is defensible — note your call. Routing: Customer Care leads, but because there's a billing dispute element we've cc'd Accounts as a judgement call (the SOP's $500 cc-rule technically doesn't trigger here — flag this if you spot it). needs_human_review = true because of review-threat language."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-005",
+    "agent": {
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "draft_reply": "Hi Priya — I see you’re looking to install an EV charger at your home. We’ll get a quote and information on our lead times sent to you within one business day. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message is classified as a QUOTE because the customer is requesting a price for a service not yet agreed upon. The situation isn’t urgent, so it receives a standard priority level of P3."
+    },
+    "benchmark": {
+      "id": "MSG-005",
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "uses customer first name (Priya)",
+        "confirms quote will be sent",
+        "sets timing expectation (within 1 business day)"
+      ],
+      "draft_reply_must_not_include": [
+        "specific price quote (catalogue lists 'from $1,400' which is not a fixed price)",
+        "named tradesperson",
+        "exclamation marks"
+      ],
+      "notes": "Standard QUOTE. EV charger single-phase is in catalogue. Note the 12-month minimum service age rule — Chatswood property built 2019 satisfies this."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-006",
+    "agent": {
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi Kevin — no hot water is a priority for us, especially with kids in the freezing weather. Someone from dispatch will call you within the hour to sort this out. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this as EMERGENCY because the lack of hot water, particularly in cold weather and with children in the house, poses a significant risk to comfort and safety. The priority is P1 since it requires immediate attention. There are no factors that necessitate human review."
+    },
+    "benchmark": {
+      "id": "MSG-006",
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges no hot water with kids in the house",
+        "states someone will call within the hour",
+        "uses customer first name (Kevin)"
+      ],
+      "draft_reply_must_not_include": [
+        "downgrade to next-day",
+        "price quote",
+        "exclamation marks"
+      ],
+      "notes": "SOP examples explicitly list 'no hot water in winter' as P1 EMERGENCY. Family with children, June (winter in Sydney). Hornsby is within 40km of CBD. Also: this could be argued as a BOOKING for a hot water repair — but the SOP is clear that lack of essential function = EMERGENCY-eligible, and 'no hot water in winter' is named explicitly."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-007",
+    "agent": {
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "draft_reply": "Hi Rachel — appliance repair isn't a service we offer. I recommend finding a local specialist who can assist with your dishwasher issue. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "The message relates to a dishwasher repair, which is outside Northwind's service offerings. As a result, it falls into the OUT_OF_SCOPE category. The priority level is P3 because it doesn't represent an immediate risk, and the customer is not dissatisfied with our service, just seeking help for a non-covered issue."
+    },
+    "benchmark": {
+      "id": "MSG-007",
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "states appliance repair is not something Northwind does",
+        "polite, brief"
+      ],
+      "draft_reply_must_not_include": [
+        "promise of a tradesperson visit",
+        "price quote"
+      ],
+      "notes": "Tricky. Catalogue says 'we install but do not repair' appliances. So this is OUT_OF_SCOPE for repair. Some agents will misclassify as BOOKING because the customer asks confidently for repair. Mark needs_human_review = true because the customer might benefit from a referral and the line between 'install' and 'repair' is a customer-facing nuance worth a human eye."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 0.0
+    }
+  },
+  {
+    "id": "MSG-008",
+    "agent": {
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "draft_reply": "Hi Alex — great to hear about your bathroom renovation plans. We can definitely provide a quote for the plumbing scope you've outlined. I'll have someone from our sales team get back to you within one business day to discuss further and arrange for your architect's plans. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this as a QUOTE because the customer is requesting a price estimate for plumbing work that has not yet been agreed upon. The priority level is P3 as this is a standard enquiry. No human review is necessary because the request is clear and straightforward."
+    },
+    "benchmark": {
+      "id": "MSG-008",
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "confirms Northwind can take this on",
+        "states a site visit / written quote will follow",
+        "uses customer first name (Alex)"
+      ],
+      "draft_reply_must_not_include": [
+        "fixed price",
+        "commitment to specific dates",
+        "exclamation marks"
+      ],
+      "notes": "Bathroom renovation plumbing is in catalogue ('from $4,500'). This is a QUOTE going to Sales. Flag for human review because the catalogue threshold for human-review flag is quotes over $5,000 — bathroom renos commonly exceed this and the SOP says flag when borderline. Defensible to leave needs_human_review = false if you read it strictly."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 0.0
+    }
+  },
+  {
+    "id": "MSG-009",
+    "agent": {
+      "category": "BOOKING",
+      "priority": "P2",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi Linda — I understand your heater isn't working and blowing cold air is frustrating. We'll have someone from dispatch call you back tomorrow to arrange a service visit. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "I classified this as a BOOKING since Linda is requesting someone to come and fix her heater, which indicates a known service. The priority is P2 because it involves a loss of essential function, and given it's a ducted system, it's also a borderline case needing human review to ensure appropriate action is taken."
+    },
+    "benchmark": {
+      "id": "MSG-009",
+      "category": "BOOKING",
+      "priority": "P2",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges ducted heater issue",
+        "states next-business-day allocation (uses Linda's name)",
+        "manages expectations — not promising same-day"
+      ],
+      "draft_reply_must_not_include": [
+        "promise of same-day service (HVAC has no on-call)",
+        "price quote",
+        "exclamation marks"
+      ],
+      "notes": "After-hours SMS. SOP is explicit: HVAC has no on-call, so this is P2 routed to Dispatch for next-business-day. Could be argued as EMERGENCY because heater not working in winter — but the SOP only lists 'no hot water in winter' as the heating-related P1 trigger, not 'heater not working'. Defensible either way; flag in your write-up if you went P1."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 0.0
+    }
+  },
+  {
+    "id": "MSG-010",
+    "agent": {
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "draft_reply": "Hi Marcus — servicing the split-system aircons in your block is a request we can definitely help with. I'll pass your details to our sales team, and they will get back to you within one business day with the information you need. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this as a QUOTE because the customer is seeking an estimate for a service not yet agreed upon. The priority level is P3 as it is a standard enquiry without any immediate risk or urgency. There are no flags for human review as the message is clear and straightforward."
+    },
+    "benchmark": {
+      "id": "MSG-010",
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "confirms quote will be sent",
+        "acknowledges multi-unit nature of the job"
+      ],
+      "draft_reply_must_not_include": [
+        "fixed price",
+        "commitment without site visit"
+      ],
+      "notes": "Multi-unit strata job. Catalogue says 'residential only, under 200m² per premises' — strata block of 8 units totals well over 200m² in aggregate, but each unit is residential and individually under 200m². The catalogue rule is ambiguous here. Flag for human review. A reasonable agent could classify this as OUT_OF_SCOPE; we've gone QUOTE + flag because each unit is residential. Note your read."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 0.0
+    }
+  },
+  {
+    "id": "MSG-011",
+    "agent": {
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "draft_reply": "Hi Jess — solar isn't something we install, but our referral partner SunPath Energy handles that and we've had good feedback from customers we've sent their way. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "The request is clearly for solar panel installation, a service not offered by Northwind. Therefore, it fits under OUT_OF_SCOPE. The priority is set to P3 as it is a standard inquiry. No need for human review since the request is straightforward."
+    },
+    "benchmark": {
+      "id": "MSG-011",
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "states solar isn't something Northwind does",
+        "mentions referral partner (SunPath Energy)",
+        "uses customer first name (Jess)"
+      ],
+      "draft_reply_must_not_include": [
+        "promise of a quote",
+        "exclamation marks"
+      ],
+      "notes": "Catalogue explicitly excludes solar and names the referral partner. Clear OUT_OF_SCOPE."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-012",
+    "agent": {
+      "category": "BOOKING",
+      "priority": "P3",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi George — I understand that your schedule has changed and you need to reschedule the booking for your hot water service replacement. We'll have someone from dispatch get in touch with you within the day to confirm a new time. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "The message contains a request to reschedule an existing booking, which falls into the BOOKING category. Since the customer is not expressing dissatisfaction, it does not qualify as a COMPLAINT. The priority is P3 as it is a non-urgent booking update."
+    },
+    "benchmark": {
+      "id": "MSG-012",
+      "category": "BOOKING",
+      "priority": "P3",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges the reschedule request",
+        "confirms dispatch will sort new time",
+        "uses customer first name (George)"
+      ],
+      "draft_reply_must_not_include": [
+        "treating it as a complaint",
+        "price quote"
+      ],
+      "notes": "SOP explicit: a reschedule is BOOKING, not COMPLAINT, unless the customer expresses dissatisfaction. Customer is polite. Clear case."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-013",
+    "agent": {
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "draft_reply": "",
+      "needs_human_review": true,
+      "reasoning": "The message does not contain understandable content, which makes it impossible to classify definitively. As it appears garbled or spam-like, I've flagged it for human review to ensure proper handling."
+    },
+    "benchmark": {
+      "id": "MSG-013",
+      "category": "OUT_OF_SCOPE",
+      "priority": "P3",
+      "route_to": "Customer Care",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "(no draft is fine — message is gibberish; agent should flag and skip drafting)"
+      ],
+      "draft_reply_must_not_include": [
+        "any pretense of understanding the request",
+        "fabricated content"
+      ],
+      "notes": "Garbled / spam test submission. SOP says flag for human review when garbled. OUT_OF_SCOPE is the cleanest classification. Agents that try to draft a coherent reply here lose marks."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-014",
+    "agent": {
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi Hannah — the burning smell from your power point is a serious concern and will require immediate attention. Someone from our dispatch team will call you within the hour to arrange for a technician to come and assess the situation. In the meantime, it's good that you've turned off the circuit. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message clearly indicates an active safety risk with the burning smell and warm powerpoint, classifying it as an EMERGENCY. Given the immediate nature of the risk, the priority is P1, and it will be routed to Dispatch for urgent action."
+    },
+    "benchmark": {
+      "id": "MSG-014",
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges the burning smell / electrical risk",
+        "praises the customer for already isolating the circuit",
+        "states someone will call within the hour"
+      ],
+      "draft_reply_must_not_include": [
+        "downgrade because customer has already isolated it",
+        "price quote",
+        "exclamation marks"
+      ],
+      "notes": "SOP examples list 'sparking, smell of burning' as P1. Customer has sensibly isolated the circuit but the underlying fault is still active. EMERGENCY → Dispatch, P1."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-015",
+    "agent": {
+      "category": "BILLING",
+      "priority": "P3",
+      "route_to": "Accounts",
+      "draft_reply": "Hi Ben — I understand it's concerning when payment status isn't updated. Our accounts team will verify your payment and get back to you within one business day. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message clearly pertains to a billing inquiry regarding the status of a payment, thus categorized as BILLING. The situation does not indicate any immediate urgency, just a request for confirmation, leading to a P3 priority. There are no additional flags to necessitate human review."
+    },
+    "benchmark": {
+      "id": "MSG-015",
+      "category": "BILLING",
+      "priority": "P3",
+      "route_to": "Accounts",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "acknowledges the payment query",
+        "confirms Accounts will check and respond",
+        "uses customer first name (Ben)"
+      ],
+      "draft_reply_must_not_include": [
+        "confirmation that payment was received (we don't know)",
+        "promise of resolution timing beyond SLA"
+      ],
+      "notes": "Standard BILLING enquiry. Goes to Accounts."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-016",
+    "agent": {
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "draft_reply": "Hi Olivia — I understand you're looking to get a quote for a switchboard upgrade and possibly a ducted aircon system. We'll have a sales representative reach out within one business day to arrange a visit and discuss both quotes. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "This message is classified as QUOTE because the customer is asking for pricing on two services not yet agreed upon. The priority is P3 since it is a standard enquiry, and there are no immediate risks or previous complaints that would escalate the urgency."
+    },
+    "benchmark": {
+      "id": "MSG-016",
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "confirms both the switchboard and ducted aircon quotes can be done",
+        "mentions site visit",
+        "uses customer first name (Olivia)"
+      ],
+      "draft_reply_must_not_include": [
+        "fixed price",
+        "promise of a single visit (ducted needs separate site assessment per catalogue)"
+      ],
+      "notes": "Two QUOTE items in one message. Both in catalogue (switchboard from $2,200, ducted from $9,500). Ducted aircon quote alone exceeds the $5,000 human-review threshold. Flag is correct. Agents that miss the second request (ducted aircon) lose marks."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 0.0
+    }
+  },
+  {
+    "id": "MSG-017",
+    "agent": {
+      "category": "COMPLAINT",
+      "priority": "P2",
+      "route_to": "Customer Care",
+      "draft_reply": "Hi Robert — I'm sorry to hear about the plumber's behaviour; that's not acceptable and not what we aim for at Northwind. I've passed your concerns to our Customer Care team, who will reach out to you shortly to discuss this further. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "This message clearly falls under the COMPLAINT category due to dissatisfaction with the service and specific criticisms about the plumber's conduct. The customer mentioned a charge of $280, which means it does not trigger the billing complaint rule. The needs_human_review flag is set because the nature of the complaint implies the potential for escalation."
+    },
+    "benchmark": {
+      "id": "MSG-017",
+      "category": "COMPLAINT",
+      "priority": "P2",
+      "route_to": "Customer Care",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "directly acknowledges the conduct issue (not the work)",
+        "states Customer Care lead will call back today",
+        "uses customer first name (Robert)"
+      ],
+      "draft_reply_must_not_include": [
+        "defending the tradesperson",
+        "framing as a billing matter",
+        "exclamation marks"
+      ],
+      "notes": "Conduct complaint, not a work or billing complaint. Job amount ($280) is well below the $1,000 P2 threshold, but tone guide is explicit: when a customer is upset, acknowledge directly. Customer mentions previous-recommender context (neighbour referred), customer is upset. SOP says flag when customer is upset — we've gone P2 with flag = true. P3 is also defensible by strict reading of SOP priority rules. Note your call."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-018",
+    "agent": {
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "draft_reply": "Hi — water is actively leaking from your hot water system, which is a priority for us. Someone from dispatch will call you within the hour to assist you. In the meantime, if you can turn off the mains at the meter, that'll help. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "The message indicates an active water leak, classifying it as an EMERGENCY and therefore a P1 priority. Since the message is in Spanish, it also requires human review due to the language barrier."
+    },
+    "benchmark": {
+      "id": "MSG-018",
+      "category": "EMERGENCY",
+      "priority": "P1",
+      "route_to": "Dispatch",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "acknowledges urgency",
+        "states someone will call back",
+        "ideally responds in plain English (we don't promise multilingual support)"
+      ],
+      "draft_reply_must_not_include": [
+        "fabricated Spanish reply (unless the agent or company actually supports it)",
+        "price quote"
+      ],
+      "notes": "Spanish-language SMS. SOP says flag for human review when message is in a non-English language. Content is clearly an emergency (water from water heater, urgent). Classify as EMERGENCY P1, route to Dispatch, flag for human review. Bonus: agents that translate the content before classifying show good judgement; agents that misclassify as 'unintelligible' miss the easy win."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-019",
+    "agent": {
+      "category": "BILLING",
+      "priority": "P2",
+      "route_to": "Accounts",
+      "draft_reply": "Hi Catherine — I understand that you're frustrated about the delay in your refund for the cancelled switchboard upgrade. I've escalated this to our Accounts team, who will look into it and get back to you within the day. — The Northwind team",
+      "needs_human_review": true,
+      "reasoning": "This message falls under the BILLING category as it concerns a refund for a cancelled job. The priority level is P2 because it involves a significant charge ($720) and the customer is clearly upset about the delay in processing. Needs human review due to the mentioned refund exceeding $500 and Catherine's distress regarding the situation."
+    },
+    "benchmark": {
+      "id": "MSG-019",
+      "category": "BILLING",
+      "priority": "P2",
+      "route_to": "Accounts",
+      "needs_human_review": true,
+      "draft_reply_must_include": [
+        "acknowledges the missed refund timing",
+        "confirms Accounts will follow up",
+        "uses customer first name (Catherine)"
+      ],
+      "draft_reply_must_not_include": [
+        "blame on the customer",
+        "promise of immediate refund without verification"
+      ],
+      "notes": "Refund of $720 — over the $500 refund threshold for human review per SOP. Goes to Accounts. Customer is mildly upset but not threatening; this is BILLING, not COMPLAINT (the substantive issue is the refund, not the service). P2 because refund delay has financial impact and customer is following up — defensible as P3. Note your read."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  },
+  {
+    "id": "MSG-020",
+    "agent": {
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "draft_reply": "Hi Nathan — I understand you're looking to get a split system installed in your home office. We'll provide you with a rough quote based on the information given, but a site visit is still advisable to account for the exposed brick wall. Expect to hear back from our sales team within the day. — The Northwind team",
+      "needs_human_review": false,
+      "reasoning": "I classified this as a QUOTE since the customer is asking for an estimate and the process for installation. The priority is P3 as it's a standard inquiry with no immediate urgency. There are no indicators that this requires human review."
+    },
+    "benchmark": {
+      "id": "MSG-020",
+      "category": "QUOTE",
+      "priority": "P3",
+      "route_to": "Sales",
+      "needs_human_review": false,
+      "draft_reply_must_include": [
+        "confirms quote will follow with site visit",
+        "acknowledges the brick-wall flag",
+        "uses customer first name (Nathan)"
+      ],
+      "draft_reply_must_not_include": [
+        "fixed price (split-system installation is 'from $1,600', not fixed)",
+        "exclamation marks"
+      ],
+      "notes": "Standard QUOTE for split-system install. Glebe is within 40km of CBD. 'From $1,600' is below the $5,000 review threshold so no flag needed. Agents that flag it because the customer mentioned a complication (brick wall) are being too cautious — the SOP threshold is the right rule to apply, not vibes."
+    },
+    "scores": {
+      "category": 1.0,
+      "priority": 1.0,
+      "route_to": 1.0,
+      "needs_human_review": 1.0
+    }
+  }
+]
